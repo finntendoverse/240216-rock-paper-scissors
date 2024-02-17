@@ -2,7 +2,9 @@
 let gameChoices = ["rock", "paper", "scissors"];
 
 // computer-generated randomized rock/paper/scissors pick
-let randomGeneration = Math.floor(Math.random() * gameChoices.length);
+let randomGeneration = function() {
+    return Math.floor(Math.random() * gameChoices.length);
+}
 
 // initial scoreboard
 let scoreboard = [0, 0, 0]
@@ -10,7 +12,8 @@ let scoreboard = [0, 0, 0]
 // Game start Function
 let gameStart = function() {
     // initial rock, paper, scissors prompt
-    let userChoice = prompt("Rock, Paper, Scissors!", `"rock", "paper", or "scissors"`);
+    let userChoice = prompt("Rock, Paper, Scissors!", `enter "rock", "paper", or "scissors"!`);
+    let computerChoice = gameChoices[randomGeneration()]                // This variable stores the computer-randomized choice so that it can be referenced
 
     if (userChoice === null) {                                          // IF user does not want to play and clicks "cancel"
         alert("Thanks for playing!");                                   // THEN will thank them for playing
@@ -18,11 +21,11 @@ let gameStart = function() {
     } else {
         if (userChoice.toLowerCase() === "rock") {                      // IF the user types "rock"
             confirm("You chose rock!");                                 // THEN a confirmation message will appear
-            alert("I chose " + gameChoices[randomGeneration] + "!");    // THEN it will randomly generate its own game input
-            if (gameChoices[randomGeneration] === "paper") {            // IF the randomly generated game input is paper
+            alert("I chose " + computerChoice + "!");                   // THEN it will randomly generate its own game input
+            if (computerChoice === "paper") {                           // IF the randomly generated game input is paper
                 alert("You lose!");                                     // THEN it will alert the player that they lost
                 scoreboard[1] = scoreboard[1] + 1;                      // THEN the scoreboard will update to reflect this
-            } else if (gameChoices[randomGeneration] == "rock") {       // IF the randomly generated game input is rock
+            } else if (computerChoice === "rock") {                     // IF the randomly generated game input is rock
                 alert("We tied!");                                      // THEN it will alert the player that they tied
                 scoreboard[2] = scoreboard[2] + 1;                      // THEN the scoreboard will update to reflect this
             } else {                                                    // IF the randomly generated game input is scissors
@@ -31,11 +34,11 @@ let gameStart = function() {
             }
         } else if (userChoice.toLowerCase() === "paper") {              // IF the user types "paper"
             confirm("You chose paper!");                                // THEN a confirmation message will appear
-            alert("I chose " + gameChoices[randomGeneration] + "!");    // THEN it will randomly generate its own game input
-            if (gameChoices[randomGeneration] === "paper") {            // IF the randomly generated game input is paper
+            alert("I chose " + computerChoice + "!");                   // THEN it will randomly generate its own game input
+            if (computerChoice === "paper") {                           // IF the randomly generated game input is paper
                 alert("We tied!");                                      // THEN it will alert the player that they tied
                 scoreboard[2] = scoreboard[2] + 1;                      // THEN the scoreboard will update to reflect this
-            } else if (gameChoices[randomGeneration] == "rock") {       // IF the randomly generated game input is rock
+            } else if (computerChoice == "rock") {                      // IF the randomly generated game input is rock
                 alert("You win!");                                      // THEN it will alert the player that they won
                 scoreboard[0] = scoreboard[0] + 1;                      // THEN the scoreboard will update to reflect this
             } else {                                                    // IF the randomly generated game input is scissors
@@ -44,11 +47,11 @@ let gameStart = function() {
             }
         } else if (userChoice.toLowerCase() === "scissors") {           // IF the user types "scissors"
             confirm("You chose scissors!");                             // THEN a confirmation message will appear
-            alert("I chose " + gameChoices[randomGeneration] + "!");    // THEN it will randomly generate its own game input
-            if (gameChoices[randomGeneration] === "paper") {            // IF the randomly generated game input is paper
+            alert("I chose " + computerChoice + "!");                   // THEN it will randomly generate its own game input
+            if (computerChoice === "paper") {                           // IF the randomly generated game input is paper
                 alert("You win!");                                      // THEN it will alert the player that they won
                 scoreboard[0] = scoreboard[0] + 1;                      // THEN the scoreboard will update to reflect this
-            } else if (gameChoices[randomGeneration] == "rock") {       // IF the randomly generated game input is rock
+            } else if (computerChoice == "rock") {                      // IF the randomly generated game input is rock
                 alert("You lose!");                                     // THEN it will alert the player that they lost
                 scoreboard[1] = scoreboard[1] + 1;                      // THEN the scoreboard will update to reflect this
             } else {                                                    // IF the randomly generated game input is scissors
